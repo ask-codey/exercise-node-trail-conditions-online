@@ -1,0 +1,23 @@
+# Requests to try with VS Code's REST Client extension.
+# On your computer: start the API first (npm run dev), then click Send Request above any request.
+# Online: put your Render address in place of http://localhost:3100 on the next line, such as
+# https://your-service-name.onrender.com, and send the same requests to the live API.
+@baseUrl = http://localhost:3100
+
+### Is it working? 200 with { "status": "ok" }
+GET {{baseUrl}}/health
+
+### Every trail, sorted by name: 200
+GET {{baseUrl}}/trails
+
+### Only the muddy trails (Lookout Ridge Trail and Meadow View Loop): 200
+GET {{baseUrl}}/trails?status=muddy
+
+### A status that isn't open, muddy or closed: 400
+GET {{baseUrl}}/trails?status=icy
+
+### One trail by its slug: 200
+GET {{baseUrl}}/trails/bear-hollow
+
+### A trail that doesn't exist: 404
+GET {{baseUrl}}/trails/moon-trail
